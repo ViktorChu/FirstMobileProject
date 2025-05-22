@@ -24,4 +24,12 @@ public class MainScreenHelper extends BaseHelper{
     public String isLicensesPresent() {
         return driver.findElement(By.id("licenses_text_view")).getText();
     }
+
+    public String isReminderDatePresent() {
+        return getString(By.id("recycle_data_time"));
+    }
+
+    public String isRepeatPresent() {
+        return driver.findElement(By.id("recycle_repeat_info")).getText();
+    }
 }
