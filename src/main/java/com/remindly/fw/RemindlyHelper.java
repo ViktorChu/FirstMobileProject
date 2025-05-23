@@ -123,4 +123,26 @@ public class RemindlyHelper extends BaseHelper {
         type(By.className("android.widget.EditText"),numberOfRepeat);
         tap(By.id("android:id/button1"));
     }
+
+    public void tapOnTime() {
+        tap(By.id("time"));
+    }
+
+    public void swipeToTypeOfRepetitions() {
+        pause(500);
+        swipe(0.8,0.6);
+        tap(By.id("RepeatType"));
+
+
+    }
+    public void selectTypeOfRepetition(int indexRep) {
+        List<WebElement> typesToSelect = driver.findElements(By.className("android.widget.TextView"));
+        pause(500);
+
+        typesToSelect.get(indexRep).click();
+
+    }
 }
+
+
+

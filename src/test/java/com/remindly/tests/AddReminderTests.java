@@ -19,6 +19,7 @@ public class AddReminderTests extends TestBase {
     public void addReminderTimePositiveTest() {
         app.getRemindly().tapOnAddReminder();
         app.getRemindly().enterTitle("Holiday");
+        app.getRemindly().tapOnTime(); //! сверить с кодом урока 39 (или в записи урока 40 в начале)
         app.getRemindly().selectTime("PM", 544, 1208, 544, 660); //координаты кнопок АМ 280,1327, РМ 800,1330, в методе координаты времени 6:00
         app.getRemindly().tapOnOk();
         app.getRemindly().saveReminder();
@@ -63,6 +64,19 @@ public class AddReminderTests extends TestBase {
         app.getRemindly().saveReminder();
 
         Assert.assertTrue(app.getMainScreen().isRepeatPresent().contains("Every 3"));  // id - set_repeat_no
+    }
+
+    @Test
+    public void addReminderTypeOfRepetitions(){
+        app.getRemindly().tapOnAddReminder();
+        app.getRemindly().enterTitle("Type of Repetitions");
+
+        app.getRemindly().swipeToTypeOfRepetitions(); // тап на TypeOfRepetitions(id - RepeatType), тап на Week (index 3, class android.widget.TextView, text = Week)
+        app.getRemindly().selectTypeOfRepetition(3);
+        app.getRemindly().saveReminder();
+
+        Assert.assertTrue(app.getMainScreen().isRepeatPresent().contains("Week")); //id = recycle_repeat_info
+
     }
 }
 
